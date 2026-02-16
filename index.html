@@ -80,10 +80,21 @@
     <script>
         document.getElementById('chatButton').addEventListener('click', function () {
             const phoneNumber = '919894845721';
-            // Use window.location.origin to get the base URL (e.g., https://your-site.vercel.app)
-            const siteUrl = window.location.origin;
 
-            const message = `Hi, I would like to know more about your services. ${siteUrl}`;
+            // Get the base URL (origin)
+            let siteUrl = window.location.origin;
+
+            // Safety check: specific handling for local file access to prevent sending file:// paths
+            if (window.location.protocol === 'file:' || siteUrl === 'null') {
+                // You can set this to your actual Vercel URL if known, 
+                // or leave it as a placeholder/empty to prevent leaking local paths.
+                siteUrl = 'https://tcs-chat-redirect.vercel.app';
+            }
+
+            // Construct the message
+            // Using a new line for better readability in WhatsApp if supported, or just space.
+            // User requested: Include the deployed site URL below the message.
+            const message = `Hi, I would like to know more about your services.\n\n${siteUrl}`;
 
             // Encode the message for URL safety
             const encodedMessage = encodeURIComponent(message);
