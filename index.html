@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCS</title>
+    <meta name="description" content="best company">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="TCS">
+    <meta property="og:description" content="best company">
+    <meta property="og:image" content="https://iili.io/qdFbbja.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tcs-chat-redirect.vercel.app/">
+    <!-- Optional, but good practice. For now, I'll let Vercel handle the URL or just omit if not known -->
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 300px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .chat-btn {
+            display: inline-block;
+            background-color: #25D366;
+            /* WhatsApp Green */
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .chat-btn:hover {
+            background-color: #128C7E;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Welcome to TCS</h1>
+        <button id="chatButton" class="chat-btn">Chat Now</button>
+    </div>
+
+    <script>
+        document.getElementById('chatButton').addEventListener('click', function () {
+            const phoneNumber = '919894845721';
+            // Use window.location.origin to get the base URL (e.g., https://your-site.vercel.app)
+            const siteUrl = window.location.origin;
+
+            const message = `Hi, I would like to know more about your services. ${siteUrl}`;
+
+            // Encode the message for URL safety
+            const encodedMessage = encodeURIComponent(message);
+
+            // Construct the WhatsApp URL
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            // Redirect the user
+            window.location.href = whatsappUrl;
+        });
+    </script>
+</body>
+
+</html>
